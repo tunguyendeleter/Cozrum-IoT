@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real-time update</title>
+</head>
+<body>
+    <h1>Real-time update</h1>
+    <div>
+        <h2 id="time">value</h2>
+    </div>
+    <script>
+        setInterval(function() {
+            fetch('/update_time').then(function(response) {
+                return response.text();
+            }).then(function(text) {
+                document.getElementById('time').textContent = text;
+            });
+        }, 1000);
+    </script>
+</body>
+</html>
