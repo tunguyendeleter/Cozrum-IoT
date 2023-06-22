@@ -47,6 +47,7 @@ Step 1:
     ```
  Step 3:
  - Modify database.json with "ip_address", "name", "password", "db", "collection", "location".
+ - Modify list of cam_name = [...,...]
  - Run nvr_api.py by "uvicorn nvr_api:app --reload", FastAPI command in command prompt
  - You need to read and have knowledge about Flask API to understand controller.py
  - Test API at http://127.0.0.1:8000/docs on browser
