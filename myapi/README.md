@@ -9,16 +9,22 @@ This library uses FastAPI instead of Flask
         ├── thongtincam.py       # API to store camera information on collection
         ├── log_api.py           # Get camera information and config
         └── database.json        # VPN and database information
-nvr_api.py : main code
+#### nvr_api.py : main code
 From above library, you can
-+ get track id of video channel to dev : get_cam_list()
-+ search 'Record log' in NVR : record_video_log()
-+ download video in NVR : download_video()
-+ search log in MongoDB through isodate : search_log_iso_date()
-+ get the lastest 20 event : get_new()
-+ get data continuously : run()
-+ set up to upload localhost in Library folder
-
++ search playback video information within specific time :
+    -     search_playback_by_time()
++ get playback video from collection :
+    -     get_playback_by_mongoid()
++ download video in NVR :
+    -     download_playback_by_mongoid()
++ search log in MongoDB :
+    -     search_log_by_time()
+    -     search_log_by_id()
++ get data in collection by page :
+    -     log_db_by_page()
++ get data continuously :
+    -     NVR_init.get_log()
+    -     NVR_init.thread_get_log() 
 Step 1:
 - You must have
   + IP Address of NVR Hikvision
@@ -27,20 +33,36 @@ Step 1:
   + VPN 
  
  Step 2:
- - Install the required libraries in NVR_Hikvision.py and controller.py in Library/BOOK/controller.py
- - Fill data in controller.py
- - Create 'test' DB 
- - Collection :
-   + 'Cam_Thu_Duc'
-   + 'Config_cam
-   + 'house'
-   + 'room'
-- key 'house','room','cam' in 'Cam_Thu_Duc' collection is identified by Object_id.
-
+ - Connect to VPN 
+ - Create MongoDB collections
+ - Example of keys in collection:
+    + Collection 1:
+    ```json
+    {
+      "_id": "id",
+      "Alarm": "action",
+      "Time": "time",
+      "Cam": "track id"
+    }
+    ```
  Step 3:
- - Run app.py
+ - Modify database.json with "ip_address", "name", "password", "db", "collection", "location".
+ - Run nvr_api.py by "uvicorn nvr_api:app --reload", FastAPI command in command prompt
  - You need to read and have knowledge about Flask API to understand controller.py
- - Search API to controller with arguement which is got in MongoDB or log in {{ip address}} on browser
+ - Test API at http://127.0.0.1:8000/docs on browser
+
+#### thongtincam.py : 
+From above library, you can
++ add new NVR information to mongoDB :
+    -     add_nvr_info()
++ get list of all information from collection :
+    -     list_nvr_info()
++ get cam list from connecting HVR :
+    -     get_cam_list()
++ rename cam in collection :
+    -     rename_cam()
+
+for more information, connect me by email "tunguyendeleter@gmail.com"
 
 
 
