@@ -1,10 +1,15 @@
 # NVR_Hikvision
 Library NVR Hikvision
+This library uses FastAPI instead of Flask
 
-Hi everyone!
-Now, i want to introduce you to my NVR library.
+### Folder
 
-NVR_Hikvision.py : main code
+    ├── myapi                    
+        ├── nvr_api.py (main)    # API to get log, search camera information
+        ├── thongtincam.py       # API to store camera information on collection
+        ├── log_api.py           # Get camera information and config
+        └── database.json        # VPN and database information
+nvr_api.py : main code
 From above library, you can
 + get track id of video channel to dev : get_cam_list()
 + search 'Record log' in NVR : record_video_log()
@@ -24,7 +29,7 @@ Step 1:
  Step 2:
  - Install the required libraries in NVR_Hikvision.py and controller.py in Library/BOOK/controller.py
  - Fill data in controller.py
- - Creat 'test' DB 
+ - Create 'test' DB 
  - Collection :
    + 'Cam_Thu_Duc'
    + 'Config_cam
@@ -38,5 +43,4 @@ Step 1:
  - Search API to controller with arguement which is got in MongoDB or log in {{ip address}} on browser
 
 
-if you have a question, send your question to hoangtruc8498@gmail.com
 
